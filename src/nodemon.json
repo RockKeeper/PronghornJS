@@ -1,0 +1,10 @@
+{
+    "restartable": "rr",
+    "verbose": false,
+    "ignore": ["public/js-dist/*","public/css-dist/*",".git", "node_modules/**/node_modules","translations/*"],
+    "watch": ["*.*"],
+    "ext": "js twig html ts",
+    "execMap": {
+        "": "node --harmony"
+    }
+}

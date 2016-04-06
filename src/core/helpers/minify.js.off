@@ -1,0 +1,42 @@
+var compressor = require('node-minify');
+var fs = require('fs');
+
+module.exports.helper = function (app) {
+
+    fs.exists('public/css-dist/', function (exists) {
+
+        if (!exists) {
+            fs.mkdirSync('public/css-dist/');
+        }
+
+        fs.exists('public/js-dist/', function (exists) {
+            if (!exists) {
+                fs.mkdirSync('public/js-dist/');
+            }
+
+            new compressor.minify({
+//                type: 'uglifyjs',
+                type: 'no-compress',
+                fileIn: ['public/js/jquery-1.10.2.js', 'public/js/jquery-ui-1.10.4.custom.min.js', 'public/js/bootstrap.min.js', 'public/js/plugins/metisMenu/jquery.metisMenu.js', 'public/js/plugins/dataTables/jquery.dataTables.js','public/js/plugins/dataTables/dataTables.bootstrap.js','public/js/sb-admin.js','public/js/bootstrap-datepicker.js','public/js/jquery.chosen.js', 'public/js/app.js','public/js/jquery.fileupload.js'],
+                fileOut: 'public/js-dist/base.js',
+                tempPath: 'temp/',
+                callback: function (err, min) {
+                    //@todo: error handling
+                }
+            });
+
+            new compressor.minify({
+                type: 'clean-css',
+                fileIn: ['public/css/bootstrap.min.css', 'public/css/font-awesome.min.css', 'public/css/plugins/dataTables/dataTables.bootstrap.css', 'public/css/sb-admin.css', 'public/css/chosen.css', 'public/css/plugins/datepicker3.css'],
+                fileOut: 'public/css-dist/base.css',
+                tempPath: 'temp/',
+                callback: function (err, min) {
+                    //@todo: error handling
+                }
+            });
+
+
+            app.set("minify", compressor);
+        });
+    });
+};
