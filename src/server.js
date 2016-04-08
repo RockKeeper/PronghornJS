@@ -89,6 +89,12 @@ var Config = require("./core/config/System.js");
     var Autoloader = require("./core/modules/Autoloader.js");
     Autoloader.initialize(app, true);
 
+    /**
+     * Load and initialize autoloader
+     */
+    var UserAutoloader = require("./user/modules/Autoloader.js");
+    UserAutoloader.initialize(app, true);
+
 
     // error handling middleware should be loaded after the loading the routes
     if ('development' == app.get('env')) {

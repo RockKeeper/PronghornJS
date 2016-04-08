@@ -17,9 +17,9 @@ var _load = function(loadPath, loadExport, app, verbose) {
             var date = new Date();
             console.log(date.toLocaleTimeString().grey.bold + (' [' + config.app.name + '] ').white + message);
         }
-    }
+    };
 
-    _log(('Loading ' + loadExport + ' from path ' + loadPath + '...').yellow, verbose);
+    _log(('Loading user ' + loadExport + ' from path ' + loadPath + '...').yellow, verbose);
 
     var loaded = 0, inactive = 0, failed = 0;
 
@@ -39,21 +39,21 @@ var _load = function(loadPath, loadExport, app, verbose) {
         }
     });
 
-    _log(('[' + loaded + '] ' + loadExport + ' loaded').green, verbose);
+    _log(('[' + loaded + '] user ' + loadExport + ' loaded').green, verbose);
     if (failed) {
-        _log(('[' + failed + '] ' + loadExport + ' failed').yellow, verbose);
+        _log(('[' + failed + '] user ' + loadExport + ' failed').yellow, verbose);
     }
     if (inactive) {
-        _log(('[' + inactive + '] ' + loadExport + ' inactive').gray, verbose);
+        _log(('[' + inactive + '] user ' + loadExport + ' inactive').gray, verbose);
     }
-}
+};
 
 var Autoloader = {
 
     // load everything
     initialize: function(app, verbose) {
 
-        this.initializeTypes(['helpers', 'drivers', 'libs', 'models'], app, verbose);
+        this.initializeTypes(['helpers', 'drivers', 'libs', 'models','controllers'], app, verbose);
 
         if (verbose || verbose === undefined) {
             console.log("");
