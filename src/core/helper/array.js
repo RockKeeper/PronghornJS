@@ -11,5 +11,5 @@ module.exports.helper = function (app) {
         return a;
     };
 
-    app.set("array:unique", unique);
+    return unique;
 };

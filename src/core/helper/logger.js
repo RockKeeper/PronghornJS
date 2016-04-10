@@ -36,7 +36,5 @@ module.exports.helper = function (app) {
         }
     };
 
-
-    app.set("helper:log", Logger);
     return Logger;
 };

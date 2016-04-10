@@ -37,5 +37,5 @@ module.exports.model = function (app) {
     });
 
 
-    app.set("model:User", User);
+    return User;
 };

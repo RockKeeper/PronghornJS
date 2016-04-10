@@ -57,5 +57,5 @@ module.exports.helper = function (app) {
         return obj.toString();
     };
 
-    app.set("helper:stringifyJSON", stringifyJSON);
+    return stringifyJSON;
 };

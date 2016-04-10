@@ -1,4 +1,4 @@
 temp/*.tmp
 node_modules
-core/config/System.js
+user/config/System.js
 public/vendors/*

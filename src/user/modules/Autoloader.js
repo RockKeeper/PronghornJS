@@ -26,11 +26,15 @@ var _load = function(loadPath, loadExport, app, verbose) {
     // find all files in loadPath and require/ignore them
     fs.readdirSync(__dirname + path.sep + '..' + path.sep + loadPath).forEach(function (file) {
         var ext = file.substr(-3);
+        var sFilename = file.slice(0,-3);
         if (ext === '.js') {
             var coreModule = require(__dirname + path.sep + '..' + path.sep + loadPath + path.sep + '' + file);
             if (coreModule[loadExport]) {
                 loaded++;
-                coreModule[loadExport](app);
+                var oObject = coreModule[loadExport](app);
+                if(oObject) {
+                    app.get("loader").set(loadExport, sFilename, oObject);
+                }
             } else {
                 failed++;
             }
