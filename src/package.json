@@ -33,7 +33,7 @@
     "express-flash": "0.0.2",
     "express-mysql": "0.0.1",
     "express-mysql-session": "^0.3.2",
-    "express-nunjucks": "^0.9.5",
+    "express-nunjucks": "^1.0.0",
     "express-session": "^1.12.1",
     "express.io": "^1.1.13",
     "glob": "^6.0.4",

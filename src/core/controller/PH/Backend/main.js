@@ -3,6 +3,7 @@ module.exports.controller = function (app) {
 
     return {
         name: "MainController",
+        environments: ["Backend"],
 
         /**
          *

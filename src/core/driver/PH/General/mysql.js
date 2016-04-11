@@ -2,7 +2,6 @@ module.exports.driver = function (app) {
 
     var config = app.get("config");
 
-
     var knex = require('knex')({
         client: 'mysql',
         debug: false,
@@ -16,6 +15,8 @@ module.exports.driver = function (app) {
     });
 
     var MySQL = require('bookshelf')(knex);
-
     app.set("driver:mysql", MySQL);
+
+    
+    return MySQL;
 };

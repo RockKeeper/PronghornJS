@@ -1,6 +1,13 @@
 module.exports.helper = function (app) {
-    var stringifyJSON = function(obj) {
 
+
+    /**
+     *
+     * @param obj
+     * @returns {*}
+     */
+    var stringifyJSON = function(obj) {
+        var partialJSON;
         // null
         if (obj === null) {
             return "null";
@@ -17,7 +24,7 @@ module.exports.helper = function (app) {
         // arrays
         if (obj.constructor === Array) {
             if (obj.length) {
-                var partialJSON = [];
+                partialJSON = [];
 
                 for (var i = 0; i < obj.length; i++) {
                     partialJSON.push(stringifyJSON(obj[i])); // recursion
@@ -33,7 +40,7 @@ module.exports.helper = function (app) {
         if (obj.constructor === Object) {
             var keys = Object.keys(obj);
             if (keys.length) {
-                var partialJSON = '';
+                partialJSON = '';
                 for (var i = 0; i < keys.length; i++) {
                     var key = keys[i];
 
@@ -57,5 +64,21 @@ module.exports.helper = function (app) {
         return obj.toString();
     };
 
-    return stringifyJSON;
+
+
+
+    /**
+     *
+     * @param value
+     * @returns {string}
+     */
+    var ucfirst = function (value) {
+        return value.charAt(0).toUpperCase() + value.slice(1);
+    };
+
+
+    return {
+        stringifyJSON: stringifyJSON,
+        ucfirst: ucfirst
+    };
 };

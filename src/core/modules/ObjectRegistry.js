@@ -2,14 +2,13 @@ var merge = require('merge');
 
 var initRegistry = function(app){
 
-    function eachKeyValue(obj, callback) {
-        for (var i in obj) {
-            if (obj.hasOwnProperty(i)) {
-                callback(i, obj[i]);
-            }
-        }
-    }
 
+    /**
+     *
+     * @param namespace
+     * @param value
+     * @returns {{}}
+     */
     function convertNamespaceToObject(namespace, value) {
         var result = {};
             var parts = namespace.split(".");
@@ -22,21 +21,29 @@ var initRegistry = function(app){
         return result;
     }
 
+    /**
+     *
+     * @param value
+     * @returns {string}
+     */
     var ucfirst = function(value){
         return value.charAt(0).toUpperCase() + value.slice(1);
     };
-    
+
+
+    /**
+     *
+     * @param app
+     * @returns {{get: _get, register: _register}}
+     * @constructor
+     */
     var ObjectRegistry = function(app){
         var _objects = {};
-
 
         var _get = function(){
             return _objects;
         };
-
-        var _dump = function(){
-            console.log(_objects);
-        };
+        
 
         var _register = function(sObjectNamespace,sIdentifier, oObject, loadPath){
 
