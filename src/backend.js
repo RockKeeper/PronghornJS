@@ -71,4 +71,5 @@ Autoloader.initialize(app, true);
 var UserAutoloader = require("./core/modules/Autoloader.js");
 UserAutoloader.initialize(app, true, "../user/");
 
-module.exports = app;
+
+module.exports  = app;

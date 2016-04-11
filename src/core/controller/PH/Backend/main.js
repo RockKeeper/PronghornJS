@@ -11,7 +11,7 @@ module.exports.controller = function (app) {
          * @param res
          */
         index: function(req, res){
-            res.render('index',{message: "Hello from controller"});
+            res.render('index',{message: "Hello from Backendcontroller"});
         },
 
 
@@ -20,6 +20,7 @@ module.exports.controller = function (app) {
          * @param request
          */
         indexSocket: function(request){
+            
             request.io.emit('index:helloworld',{message: 'Socket.io OK!'});
         }
     };

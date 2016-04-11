@@ -10,7 +10,7 @@ module.exports.controller = function (app) {
          * @param res
          */
         index: function(req, res){
-            res.render('index',{message: "Hello from controller"});
+            res.render('index',{message: "Hello from Frontendcontroller"});
         },
 
 

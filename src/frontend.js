@@ -22,7 +22,8 @@ var cookie = require('cookie');
 var crypto = require('crypto');
 var logo = require('./logo');
 
-var backend = require('./backend');
+var backend = require("./backend");
+
 
 // get global config
 var Config = require("./user/config/System.js");
@@ -100,18 +101,14 @@ var UserAutoloader = require("./core/modules/Autoloader.js");
 UserAutoloader.initialize(app, true,"../user/");
 
 
-//
-// console.log(app.get("PH/Backend/Controller/MainController"));
-// console.log(app.get("registry").get().PH.Backend.Controller.MainController);
-
-
 // error handling middleware should be loaded after the loading the routes
 if ('development' == app.get('env')) {
     app.use(errorHandler());
 }
 
+backend.get("PH/Backend/Router/SocketRouter").init(app);
+
 // mount backend
 app.use("/backend", backend);
-
 
 module.exports = app;
