@@ -22,8 +22,11 @@ var cookie = require('cookie');
 var crypto = require('crypto');
 var logo = require('./logo');
 
+var backend = require('./backend');
+
 // get global config
 var Config = require("./user/config/System.js");
+
 
 /**
  * Start message
@@ -106,6 +109,9 @@ UserAutoloader.initialize(app, true,"../user/");
 if ('development' == app.get('env')) {
     app.use(errorHandler());
 }
+
+// mount backend
+app.use("/backend", backend);
 
 
 module.exports = app;
