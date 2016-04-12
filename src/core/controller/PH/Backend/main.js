@@ -13,6 +13,14 @@ module.exports.controller = function (app) {
         index: function(req, res){
             res.render('index',{message: "Hello from Backendcontroller"});
         },
+        /**
+         *
+         * @param req
+         * @param res
+         */
+        test: function(req, res){
+            res.render('index',{message: "Hello from test"});
+        },
 
 
         /**
@@ -20,8 +28,7 @@ module.exports.controller = function (app) {
          * @param request
          */
         indexSocket: function(request){
-            
-            request.io.emit('index:helloworld',{message: 'Socket.io OK!'});
+            request.socket.emit('index:helloworld',{message: 'Socket.io OK!'});
         }
     };
 };

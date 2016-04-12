@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var express = require('express.io');
+var express = require('express.oi');
 var fs = require('fs');
 var colors = require('colors');
 var crypt = require('bcrypt-nodejs');
@@ -20,6 +20,8 @@ var cluster = require('express-cluster');
 var nunjucks = require('express-nunjucks');
 var cookie = require('cookie');
 var crypto = require('crypto');
+var cookieParser = require('cookie-parser');
+
 var logo = require('./logo');
 
 var backend = require("./backend");
@@ -64,7 +66,7 @@ app.use(multer());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // you will need to use cookieParser to expose cookies to req.cookies
-app.use(express.cookieParser());
+app.use(cookieParser());
 
 
 // setup nunjucks

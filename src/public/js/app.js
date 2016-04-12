@@ -27,10 +27,8 @@
         console.log('IO disconnect',err);
     });
 
-
     // demo event
     _connection.on('index:helloworld', function (data) {
-	    console.log('hello world');
         document.getElementById("io").innerHTML = data.message;
     });
 
